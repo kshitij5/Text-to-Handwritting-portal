@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/style.css">
+    <!-- javascript -->
+    <script type="text/javascript" src="/src/app.js"></script>
+    <script type="text/javascript" src="/node_modules/html2canvas/dist/html2canvas.min.js"></script>
+
+    <!-- Load Fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Homemade+Apple|Roboto|Caveat|Liu+Jian+Mao+Cao&display=swap" />
+    <title>Text to Handwriting </title>
+</head>
+
+<body>
+    <main>
+        <header class="jumbotron">
+            <h1>Text to Handwriting</h1>
+            <p>Hate writing assigments? This tool will help you convert your text to handwriting: xD</p>
+        </header>
+
+        <!-- input here -->
+        <section class="container">
+            <!-- generate image section -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <div>
+                        <h2 style="margin-top: 0px;">Input</h2>
+                        <label class="block" for="note">Type/Paste text below</label>
+                    </div>
+
+                    <!-- page container  -->
+                    <div class="page-container" id="note">
+                        <div class="margin-left">
+                            <!-- <div contentEditable="true" class="page-left-container"></div> -->
+                            <div class="margin-top">
+                                <!-- <div contentEditable="true" class="page-top-container"></div> -->
+                                <div class="page-body">
+                                    <div contentEditable="true" class="">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Ut rhoncus dui eget tortor feugiat iaculis. Morbi et dolor
+                                        in felis viverra efficitur. Integer id laoreet arcu.
+                                        Mauris turpis nibh, scelerisque sed tristique non,
+                                        hendrerit in erat. Duis interdum nisl risus, ac ultrices
+                                        ipsum auctor at. Aliquam faucibus iaculis metus sit amet
+                                        tincidunt. Vestibulum cursus urna vel nunc imperdiet
+                                        suscipit. Ut eu augue egestas, porta orci lobortis,
+                                        pharetra orci. Morbi eu tellus quis nisi tempor accumsan
+                                        nec eu urna. empor, ullamcorper tortor. Mauris quis
+                                        fermentum augue. Phasellus ac nisl hendrerit, fringilla
+                                        enim aliquam, placerat odio. Ut tortor nisi, pellentesque
+                                        sed nisi at, hendrerit imperdiet turpis. Proin interdum
+                                        porttitor metus at hendrerit. Proin ipsum nisl, lacinia
+                                        vitae purus ullamcorper, maximus convallis sem. Sed nec
+                                        lacinia lorem. Duis arcu metus, cursus non odio quis,
+                                        tincidunt tempor augue. Donec eget vestibulum risus.
+                                        Nullam blandit quis est vitae feugiat.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- fill data section -->
+                <div class="col-sm-6">
+                    <!-- handwriting option selections option -->
+                    <fieldset>
+                        <legend>Handwriting Options</legend>
+                        <div>
+                            <label class="block" for="handwriting-font">Handwriting Font</label>
+                            <select id="handwriting-font" onchange="changeFont()">
+                                <option selected style="font-family: 'Homemade Apple';"
+                                    value="'Homemade Apple', cursive">
+                                    Homemade Apple
+                                </option>
+                                <option value="Hindi_Font">Kruti-dev(Hindi)</option>
+                                <option style="font-family: 'Caveat', cursive; font-size: 13pt;"
+                                    value="'Caveat', cursive">
+                                    Caveat
+                                </option>
+                                <option style="
+                                          font-family: 'Liu Jian Mao Cao';
+                                          font-size: 13pt;
+                                        " value="'Liu Jian Mao Cao', cursive">
+                                    Liu Jian Mao Cao
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- font size option -->
+                        <div class="">
+                            <label for="font-size">Font Size</label>
+                            <!-- <div class="slidecontainer">
+                                    <input type="range" id="font-size" min="0" max="20" value="10" step="1"
+                                        onchange="changeSize()">
+                                </div> -->
+                            <input type="number" id="font-size" min="0" max="20" value="10" onchange="changeSize()" />
+                        </div>
+
+                        <!-- font color option -->
+                        <div>
+                            <label class="block" for="ink-color">Ink Color</label>
+                            <input type="color" id="ink-color" value="#000f55" onchange="changeColor()" />
+                            <!-- <select id="ink-color" onchange="changeColor()" />
+                                <option default value="#000f55">Blue</option>
+                                <option value="black">Black</option>
+                                <option value="#ba3807">Red</option>
+                                </select> -->
+                        </div>
+
+                        <!-- generate button -->
+
+                        <div class="container">
+                            <button type="submit" class="btn btn-primary" onclick="generateImage();">
+                                Generate Image
+                            </button>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </section> <!-- output here -->
+        <section class="container">
+            <!-- output header -->
+            <h2 id="output-header">Output</h2>
+
+            <!-- output images here -->
+            <div id="output" class="output" style="text-align: center;">
+                Click "Generate Image" Button to generate new image.
+            </div>
+
+            <div id="output-list"></div>
+
+            <!-- download options -->
+            <div style="text-align: center; padding: 30px;">
+                <button class="btn btn-primary" id="download-as-pdf-button" onclick="clearImage()">
+                    Download Images
+                </button>
+
+                <button class="btn btn-danger" id="delete-all-button" onclick="clearImage()">
+                    Clear all images
+                </button>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+/* CSS Variables */
+html,
+body {
+  margin: 0px;
+}
+body {
+  --handwriting-font: "Homemade Apple", cursive;
+  --font-size: 10pt;
+  --ink-color: #000f55;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+fieldset {
+  padding: 17px 20px;
+  border-radius: 5px;
+  border: 1px solid;
+  margin-top: 16px;
+}
+
+legend {
+  font-size: 0.88rem;
+  padding: 0px 6px;
+}
+.page-container {
+  width: 400px;
+  height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
+  /* background-color:red; */
+  background-image: url("/src/images/page.jpg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover;
+
+  font-size: var(--font-size);
+  position: relative;
+  top: 0px;
+  font-family: var(--handwriting-font);
+  color: var(--ink-color);
+  line-height: 1.2em;
+  overflow-y: auto;
+  scrollbar-color: transparent;
+  scrollbar-width: thin;
+}
+
+.margin-left {
+  margin-left: 50px;
+}
+
+.margin-top {
+  padding-top: 38px;
+}
+
+.page-body {
+  /* width: 400px; */
+  margin: 10px;
+}
