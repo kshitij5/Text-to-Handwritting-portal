@@ -4,7 +4,8 @@ Text to Handwriting is a web application which converts text into its equivalent
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=demo)
+
+![App Screenshot](https://github.com/kshitij5/Text-to-Handwritting-portal/blob/16c0229241109a58880da7fe919ca7d1c28fd0e0/demo.png)
 
 ## Features
 
